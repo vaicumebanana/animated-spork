@@ -5,9 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BoostStoreBS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+:root{
+--yellow:#ffcc00;
+--purple:#6d42ff;
+--purple2:#3d1cb8;
+--dark:#0b1020;
+--card:#121933;
+--text:#fff;
+}
+
 *{
 margin:0;
 padding:0;
@@ -15,228 +24,306 @@ box-sizing:border-box;
 font-family:Poppins,sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-background:#0d1117;
+background:var(--dark);
 color:white;
 overflow-x:hidden;
 }
 
-.hero{
-min-height:100vh;
-background:linear-gradient(135deg,#6b35ff,#2b5cff);
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+overflow:hidden;
+z-index:-1;
+}
+
+.star{
+position:absolute;
+background:rgba(255,255,255,.3);
+border-radius:50%;
+animation:float 12s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+backdrop-filter:blur(12px);
+background:rgba(10,10,20,.7);
 display:flex;
+justify-content:space-between;
 align-items:center;
+padding:20px 8%;
+z-index:999;
+}
+
+.logo{
+font-family:'Luckiest Guy';
+font-size:2rem;
+color:var(--yellow);
+}
+
+nav a{
+text-decoration:none;
+color:white;
+margin-left:25px;
+font-weight:600;
+}
+
+.hero{
+height:100vh;
+display:flex;
 justify-content:center;
+align-items:center;
 text-align:center;
 padding:20px;
+background:
+linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.5)),
+linear-gradient(135deg,var(--purple),var(--purple2));
 }
 
-.hero-content h1{
-font-family:'Luckiest Guy',cursive;
-font-size:5rem;
-color:#ffcc00;
-margin-bottom:20px;
+.hero h1{
+font-family:'Luckiest Guy';
+font-size:6rem;
+color:var(--yellow);
+text-shadow:0 5px 25px rgba(255,204,0,.4);
+animation:bounce 3s infinite;
 }
 
-.hero-content p{
+@keyframes bounce{
+50%{
+transform:translateY(-10px);
+}
+}
+
+.hero p{
 font-size:1.3rem;
+margin-top:15px;
 margin-bottom:30px;
 }
 
 .btn{
 padding:15px 35px;
 border:none;
-border-radius:12px;
-font-size:1rem;
-font-weight:700;
+border-radius:14px;
 cursor:pointer;
-margin:10px;
+font-weight:700;
+font-size:1rem;
 transition:.3s;
 }
 
 .primary{
-background:#ffcc00;
+background:var(--yellow);
 color:black;
 }
 
-.secondary{
-background:white;
-color:#6b35ff;
-}
-
 .btn:hover{
-transform:translateY(-4px);
+transform:translateY(-5px);
 }
 
-.products{
-padding:80px 20px;
-max-width:1200px;
-margin:auto;
+section{
+padding:100px 8%;
 }
 
-.section-title{
-text-align:center;
+.title{
+font-family:'Luckiest Guy';
 font-size:3rem;
+text-align:center;
 margin-bottom:50px;
-font-family:'Luckiest Guy',cursive;
-color:#ffcc00;
+color:var(--yellow);
 }
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px;
 }
 
 .card{
-background:#171b25;
-padding:30px;
-border-radius:20px;
-text-align:center;
-border:2px solid #262d3e;
+background:var(--card);
+padding:35px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.03);
+box-shadow:0 25px 50px rgba(109,66,255,.4);
 }
 
 .card h2{
-margin-bottom:15px;
 font-size:2rem;
+margin-bottom:15px;
 }
 
 .price{
 font-size:2rem;
-color:#ffcc00;
-margin:20px 0;
-font-weight:700;
+color:var(--yellow);
+font-weight:800;
+margin:15px 0;
 }
 
 .buy{
-background:#6b35ff;
-color:white;
-padding:14px 30px;
+width:100%;
+padding:15px;
 border:none;
-border-radius:10px;
+background:var(--purple);
+color:white;
+border-radius:12px;
 cursor:pointer;
 font-weight:700;
 }
 
 .features{
-padding:80px 20px;
-background:#121620;
-}
-
-.feature-grid{
-max-width:1200px;
-margin:auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .feature{
-background:#171b25;
+background:var(--card);
 padding:25px;
-border-radius:16px;
+border-radius:18px;
 text-align:center;
 }
 
-footer{
-padding:30px;
-text-align:center;
-background:#0a0d12;
-color:#888;
-}
-
-.popup{
+.modal{
 position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#171b25;
-padding:30px;
-border-radius:15px;
+inset:0;
+background:rgba(0,0,0,.8);
 display:none;
-z-index:999;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.modal-content{
+background:#121933;
+padding:30px;
+border-radius:25px;
 width:90%;
-max-width:400px;
+max-width:500px;
 }
 
-.popup input{
-width:100%;
-padding:12px;
-margin-top:10px;
-margin-bottom:10px;
-border:none;
-border-radius:8px;
+.modal-content h2{
+margin-bottom:20px;
 }
 
-.popup button{
+input,select,textarea{
 width:100%;
-padding:12px;
-background:#ffcc00;
+padding:14px;
+margin-bottom:12px;
 border:none;
-border-radius:8px;
-font-weight:700;
+border-radius:10px;
+background:#1b2448;
+color:white;
+}
+
+.submit{
+width:100%;
+padding:15px;
+background:var(--yellow);
+color:black;
+font-weight:800;
+border:none;
+border-radius:12px;
 cursor:pointer;
 }
 
-.overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.7);
-display:none;
+footer{
+padding:40px;
+text-align:center;
+background:#080c17;
 }
 </style>
 </head>
 <body>
 
-<section class="hero">
-<div class="hero-content">
-<h1>BoostStoreBS</h1>
-<p>Professional Brawl Stars Boosting Services</p>
+<div class="bg" id="bg"></div>
 
-<button class="btn primary">Ranked Boost</button>
-<button class="btn secondary">Prestige Boost</button>
+<nav>
+<div class="logo">BoostStoreBS</div>
+<div>
+<a href="#services">Services</a>
+<a href="#why">Why Us</a>
+</div>
+</nav>
+
+<section class="hero">
+<div>
+<h1>BOOSTSTOREBS</h1>
+<p>Professional Brawl Stars Boosting Services</p>
+<button class="btn primary" onclick="document.getElementById('services').scrollIntoView()">
+Explore Services
+</button>
 </div>
 </section>
 
-<section class="products">
-<h2 class="section-title">Services</h2>
+<section id="services">
+<h2 class="title">Services</h2>
 
 <div class="cards">
 
 <div class="card">
 <h2>🏆 Ranked Boost</h2>
-<p>Push your account to any rank.</p>
-<div class="price">From €4.99</div>
-<button class="buy" onclick="openOrder('Ranked Boost')">Order Now</button>
+<p>Push any rank safely and quickly.</p>
+<div class="price">From *PRICE*</div>
+<button class="buy" onclick="openOrder('Ranked Boost')">
+Order Now
+</button>
 </div>
 
 <div class="card">
 <h2>⭐ Prestige Boost</h2>
-<p>Level up your prestige faster.</p>
-<div class="price">From €9.99</div>
-<button class="buy" onclick="openOrder('Prestige Boost')">Order Now</button>
+<p>Unlock prestige levels faster.</p>
+<div class="price">From *PRICE*</div>
+<button class="buy" onclick="openOrder('Prestige Boost')">
+Order Now
+</button>
 </div>
 
 </div>
 </section>
 
-<section class="features">
-<h2 class="section-title">Why Us?</h2>
+<section id="why">
+<h2 class="title">Why Choose Us?</h2>
 
-<div class="feature-grid">
+<div class="features">
 <div class="feature">
 <h3>⚡ Fast Delivery</h3>
-<p>Most orders start within minutes.</p>
+<p>Orders start quickly.</p>
 </div>
 
 <div class="feature">
 <h3>🔒 Safe Service</h3>
-<p>Account security is our priority.</p>
+<p>Account safety first.</p>
 </div>
 
 <div class="feature">
-<h3>👑 Top Players</h3>
-<p>Professional experienced boosters.</p>
+<h3>👑 Pro Players</h3>
+<p>Experienced boosters.</p>
 </div>
 
 <div class="feature">
@@ -246,33 +333,208 @@ display:none;
 </div>
 </section>
 
-<footer>
-© 2026 BoostStoreBS - All Rights Reserved
-</footer>
+<div class="modal" id="modal">
+<div class="modal-content">
 
-<div class="overlay" id="overlay"></div>
+<h2>Create Order</h2>
 
-<div class="popup" id="popup">
-<h2 id="serviceName">Order</h2>
+<form id="orderForm">
+<input id="service" readonly>
 
-<input placeholder="Discord Username">
-<input placeholder="Brawl Stars ID">
+<input id="discord"
+placeholder="Discord Username"
+required>
 
-<button onclick="closeOrder()">Submit Order</button>
+<input id="player"
+placeholder="Player ID"
+required>
+
+<select id="currentRank">
+<option>Bronze</option>
+<option>Silver</option>
+<option>Gold</option>
+<option>Diamond</option>
+<option>Mythic</option>
+<option>Legendary</option>
+<option>Masters</option>
+</select>
+
+<select id="desiredRank">
+<option>Silver</option>
+<option>Gold</option>
+<option>Diamond</option>
+<option>Mythic</option>
+<option>Legendary</option>
+<option>Masters</option>
+</select>
+
+<textarea
+id="notes"
+placeholder="Extra Notes"></textarea>
+
+<button class="submit">
+Submit Order
+</button>
+
+</form>
+</div>
 </div>
 
-<script>
-function openOrder(service){
-document.getElementById("serviceName").innerText = service;
-document.getElementById("popup").style.display = "block";
-document.getElementById("overlay").style.display = "block";
+<footer>
+© 2026 BoostStoreBS
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+getFirestore,
+collection,
+addDoc,
+serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey:"YOUR_API_KEY",
+authDomain:"YOUR_DOMAIN",
+projectId:"YOUR_PROJECT_ID",
+storageBucket:"YOUR_BUCKET",
+messagingSenderId:"YOUR_SENDER",
+appId:"YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+  
+// Floating background stars
+const bg = document.getElementById("bg");
+
+for(let i=0;i<60;i++){
+    const star = document.createElement("div");
+    star.classList.add("star");
+
+    const size = Math.random()*6+2;
+
+    star.style.width = size+"px";
+    star.style.height = size+"px";
+    star.style.left = Math.random()*100+"%";
+    star.style.animationDuration = (Math.random()*10+8)+"s";
+    star.style.animationDelay = Math.random()*10+"s";
+
+    bg.appendChild(star);
 }
 
-function closeOrder(){
-alert("Order Submitted!");
-document.getElementById("popup").style.display = "none";
-document.getElementById("overlay").style.display = "none";
+// Open order modal
+window.openOrder = function(service){
+    document.getElementById("modal").style.display="flex";
+    document.getElementById("service").value=service;
 }
+
+// Close modal when clicking outside
+document.getElementById("modal").addEventListener("click",(e)=>{
+    if(e.target.id==="modal"){
+        document.getElementById("modal").style.display="none";
+    }
+});
+
+// Firebase order submission
+const form = document.getElementById("orderForm");
+
+form.addEventListener("submit", async (e)=>{
+
+    e.preventDefault();
+
+    const submitBtn =
+    document.querySelector(".submit");
+
+    submitBtn.disabled=true;
+    submitBtn.innerText="Sending...";
+
+    try{
+
+        await addDoc(
+            collection(db,"orders"),
+            {
+                service:
+                document.getElementById("service").value,
+
+                discord:
+                document.getElementById("discord").value,
+
+                playerId:
+                document.getElementById("player").value,
+
+                currentRank:
+                document.getElementById("currentRank").value,
+
+                desiredRank:
+                document.getElementById("desiredRank").value,
+
+                notes:
+                document.getElementById("notes").value,
+
+                status:"Pending",
+
+                createdAt:
+                serverTimestamp()
+            }
+        );
+
+        alert("✅ Order submitted successfully!");
+
+        form.reset();
+
+        document.getElementById("modal").style.display="none";
+
+    }catch(err){
+
+        console.error(err);
+
+        alert(
+          "❌ Error sending order. Check Firebase configuration."
+        );
+
+    }
+
+    submitBtn.disabled=false;
+    submitBtn.innerText="Submit Order";
+});
+
+// Fade-in animation on scroll
+const observer =
+new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.animate([
+                {
+                    opacity:0,
+                    transform:"translateY(50px)"
+                },
+                {
+                    opacity:1,
+                    transform:"translateY(0)"
+                }
+            ],{
+                duration:800,
+                fill:"forwards"
+            });
+
+        }
+
+    });
+
+},{
+    threshold:0.15
+});
+
+document
+.querySelectorAll(
+".card,.feature,.title"
+)
+.forEach(el=>observer.observe(el));
+
 </script>
 
 </body>
