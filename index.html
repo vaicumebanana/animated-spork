@@ -1,71 +1,279 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BoostStoreBS</title>
-<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#0d1117;
+color:white;
+overflow-x:hidden;
+}
+
+.hero{
+min-height:100vh;
+background:linear-gradient(135deg,#6b35ff,#2b5cff);
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.hero-content h1{
+font-family:'Luckiest Guy',cursive;
+font-size:5rem;
+color:#ffcc00;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:1.3rem;
+margin-bottom:30px;
+}
+
+.btn{
+padding:15px 35px;
+border:none;
+border-radius:12px;
+font-size:1rem;
+font-weight:700;
+cursor:pointer;
+margin:10px;
+transition:.3s;
+}
+
+.primary{
+background:#ffcc00;
+color:black;
+}
+
+.secondary{
+background:white;
+color:#6b35ff;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+.products{
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+font-size:3rem;
+margin-bottom:50px;
+font-family:'Luckiest Guy',cursive;
+color:#ffcc00;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.card{
+background:#171b25;
+padding:30px;
+border-radius:20px;
+text-align:center;
+border:2px solid #262d3e;
+}
+
+.card h2{
+margin-bottom:15px;
+font-size:2rem;
+}
+
+.price{
+font-size:2rem;
+color:#ffcc00;
+margin:20px 0;
+font-weight:700;
+}
+
+.buy{
+background:#6b35ff;
+color:white;
+padding:14px 30px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:700;
+}
+
+.features{
+padding:80px 20px;
+background:#121620;
+}
+
+.feature-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.feature{
+background:#171b25;
+padding:25px;
+border-radius:16px;
+text-align:center;
+}
+
+footer{
+padding:30px;
+text-align:center;
+background:#0a0d12;
+color:#888;
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#171b25;
+padding:30px;
+border-radius:15px;
+display:none;
+z-index:999;
+width:90%;
+max-width:400px;
+}
+
+.popup input{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:10px;
+border:none;
+border-radius:8px;
+}
+
+.popup button{
+width:100%;
+padding:12px;
+background:#ffcc00;
+border:none;
+border-radius:8px;
+font-weight:700;
+cursor:pointer;
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.7);
+display:none;
+}
+</style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">BoostStoreBS</div>
-    <div class="links">
-        <a href="index.html">Home</a>
-        <a href="ranked.html">Ranked Boost</a>
-        <a href="prestige.html">Prestige Boost</a>
-    </div>
-</nav>
-
 <section class="hero">
-    <h1>BoostStoreBS</h1>
-    <p>Professional Brawl Stars Progression Services</p>
-    <div class="buttons">
-        <a href="ranked.html" class="btn">Ranked Boost</a>
-        <a href="prestige.html" class="btn">Prestige Boost</a>
-    </div>
+<div class="hero-content">
+<h1>BoostStoreBS</h1>
+<p>Professional Brawl Stars Boosting Services</p>
+
+<button class="btn primary">Ranked Boost</button>
+<button class="btn secondary">Prestige Boost</button>
+</div>
 </section>
 
-<section class="services">
-    <div class="card">
-        <h2>🏆 Ranked Boost</h2>
-        <p>Push your account to the rank you deserve.</p>
-        <a href="ranked.html">Learn More</a>
-    </div>
+<section class="products">
+<h2 class="section-title">Services</h2>
 
-    <div class="card">
-        <h2>⭐ Prestige Boost</h2>
-        <p>Unlock prestige levels quickly and efficiently.</p>
-        <a href="prestige.html">Learn More</a>
-    </div>
+<div class="cards">
+
+<div class="card">
+<h2>🏆 Ranked Boost</h2>
+<p>Push your account to any rank.</p>
+<div class="price">From €4.99</div>
+<button class="buy" onclick="openOrder('Ranked Boost')">Order Now</button>
+</div>
+
+<div class="card">
+<h2>⭐ Prestige Boost</h2>
+<p>Level up your prestige faster.</p>
+<div class="price">From €9.99</div>
+<button class="buy" onclick="openOrder('Prestige Boost')">Order Now</button>
+</div>
+
+</div>
 </section>
 
-<section class="reviews">
-    <h2>Customer Reviews</h2>
-    <div class="card">⭐⭐⭐⭐⭐ Fast and professional!</div>
-    <div class="card">⭐⭐⭐⭐⭐ Reached Masters quickly.</div>
-    <div class="card">⭐⭐⭐⭐⭐ Great communication.</div>
-</section>
+<section class="features">
+<h2 class="section-title">Why Us?</h2>
 
-<section class="faq">
-    <h2>FAQ</h2>
+<div class="feature-grid">
+<div class="feature">
+<h3>⚡ Fast Delivery</h3>
+<p>Most orders start within minutes.</p>
+</div>
 
-    <button class="faq-btn">How long does it take?</button>
-    <div class="faq-content">
-        Usually 1-5 days depending on the order.
-    </div>
+<div class="feature">
+<h3>🔒 Safe Service</h3>
+<p>Account security is our priority.</p>
+</div>
 
-    <button class="faq-btn">How do I order?</button>
-    <div class="faq-content">
-        Contact us via Discord.
-    </div>
+<div class="feature">
+<h3>👑 Top Players</h3>
+<p>Professional experienced boosters.</p>
+</div>
+
+<div class="feature">
+<h3>💬 24/7 Support</h3>
+<p>Always available.</p>
+</div>
+</div>
 </section>
 
 <footer>
-    © 2026 BoostStoreBS
+© 2026 BoostStoreBS - All Rights Reserved
 </footer>
 
-<script src="script.js"></script>
+<div class="overlay" id="overlay"></div>
+
+<div class="popup" id="popup">
+<h2 id="serviceName">Order</h2>
+
+<input placeholder="Discord Username">
+<input placeholder="Brawl Stars ID">
+
+<button onclick="closeOrder()">Submit Order</button>
+</div>
+
+<script>
+function openOrder(service){
+document.getElementById("serviceName").innerText = service;
+document.getElementById("popup").style.display = "block";
+document.getElementById("overlay").style.display = "block";
+}
+
+function closeOrder(){
+alert("Order Submitted!");
+document.getElementById("popup").style.display = "none";
+document.getElementById("overlay").style.display = "none";
+}
+</script>
+
 </body>
 </html>
